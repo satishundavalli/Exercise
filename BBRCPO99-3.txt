@@ -1,0 +1,46 @@
+Step 1. Import the necessary libraries
+ ANS:
+import pandas as pd
+import numpy as np
+Step 2. Import the dataset from this address.
+
+Step 3. Assign it to a variable called euro12.
+  ANS:
+euro = pd.read_csv('URL.csv')
+euro
+Step 4. Select only the Goal column.
+  ANS:
+euro.Goals
+Step 5. How many team participated in the Euro2012?
+  ANS:
+euro.Team.nunique()
+Step 6. What is the number of columns in the dataset?
+  ANS:
+euro.shape[1]
+Step 7. View only the columns Team, Yellow Cards and Red Cards and assign them to a dataframe called discipline
+ ANS:
+ discipline = euro[['Team', 'Yellow Cards', 'Red Cards']]
+ discipline
+Step 8. Sort the teams by Red Cards, then to Yellow Cards
+ ANS:
+ discipline.sort_values(by=['Red Cards', 'Yellow Cards'], inplace = True)
+discipline
+Step 9. Calculate the mean Yellow Cards given per Team
+ ANS:
+ discipline['Yellow Cards'].sum() / len(discipline['Yellow Cards'])
+discipline['Yellow Cards'].mean()
+Step 10. Filter teams that scored more than 6 goals
+ ANS:
+ euro[euro['Goals'] > 6]
+Step 11. Select the teams that start with G
+ ANS:
+ euro[euro.Team.str.startswith('G')]
+Step 12. Select the first 7 columns
+ ANS: 
+euro.head(7)
+Step 13. Select all columns except the last 3.
+  ANS:
+euro.iloc[: , 0:-3]
+Step 14. Present only the Shooting Accuracy from England, Italy and Russia
+ ANS: 
+euro.loc[euro.Team.isin(['England', 'Italy', 'Russia']), ['Team','Shooting Accuracy']]
